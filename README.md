@@ -12,11 +12,10 @@
 
 | (1) Morning Azkar | (2) Evening Azkar | (3) Settings | (4) Example Notification |
 |------------------|-----------------|--------------|--------------------------|
-| ![Morning](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(4).jpg) | ![Evening](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(3).jpg) | ![Settings](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(2).jpg) | ![Notification](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(1).jpg) |
+| ![Morning](https://github.com/CS2487/Azkari/blob/main/ScreenShoot/Screenshot%20(4).jpg?raw=true) | ![Evening](https://github.com/CS2487/Azkari/blob/main/ScreenShoot/Screenshot%20(3).jpg?raw=true) | ![Settings](https://github.com/CS2487/Azkari/blob/main/ScreenShoot/Screenshot%20(2).jpg?raw=true) | ![Notification](https://github.com/CS2487/Azkari/blob/main/ScreenShoot/Screenshot%20(1).jpg?raw=true) |
 
-> Add your own screenshots in the `screenshots/` folder.
+> Add your own screenshots in the `ScreenShoot/` folder.
 
----
 
 ## 📦 Project Maintenance Guide
 
@@ -70,3 +69,4 @@ flutter build appbundle --release --split-debug-info=debug_info --obfuscate
 =======
 
 >>>>>>> 78a072d795e6b2c9307ab91479ce8645dd9ba59b
+
