@@ -1,7 +1,7 @@
 # Azkari – Daily Azkar Flutter App
 
-[![Flutter](https://img.shields.io/badge/Flutter-3.16.8-blue?logo=flutter&logoColor=white)](https://flutter.dev/)
-[![Dart](https://img.shields.io/badge/Dart-3.2.5-blue?logo=dart&logoColor=white)](https://dart.dev/)
+[![Flutter](https://img.shields.io/badge/Flutter-3.24.3-blue?logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Dart-3.5.3-blue?logo=dart&logoColor=white)](https://dart.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 **Azkari** is a Flutter application that provides **daily morning and evening Azkar** reminders, with customizable notification times, vibration settings, and multilingual support (Arabic & English).  
@@ -69,6 +69,7 @@ flutter build appbundle --release --split-debug-info=debug_info --obfuscate
 =======
 
 >>>>>>> 78a072d795e6b2c9307ab91479ce8645dd9ba59b
+
 
 
 
