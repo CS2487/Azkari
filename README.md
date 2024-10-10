@@ -25,3 +25,18 @@ Follow these steps to ensure your Flutter project is clean, organized, and error
 ### 1️⃣ Clean the Project
 ```bash
 flutter clean
+
+🚀 Features
+☀️ Morning Azkar with authentic sources
+🌙 Evening Azkar with references
+⏰ Customizable Notification Times (Set your preferred reminder schedule)
+🔊 Vibration Toggle (Enable/disable haptic feedback)
+🌍 Multilingual UI (Arabic & English — auto or manual switch)
+📱 Responsive Design (Works flawlessly on Android & iOS)
+🧘 Minimalist & Calm UI for spiritual focus
+📦 Project Maintenance Guide
+Keep your codebase clean, professional, and production-ready with this maintenance checklist.
+
+1️⃣ Clean Build Artifacts
+flutter clean2️⃣ Fetch Dependencies
+flutter pub get
