@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class AzkarCard extends StatelessWidget {
   final String title;
   final String type;

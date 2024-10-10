@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AzkarListView extends StatelessWidget {
-  final List<Map<String, dynamic>> items;   // بدل String
+  final List<Map<String, dynamic>> items; // بدل String
   const AzkarListView({super.key, required this.items});
 
   @override

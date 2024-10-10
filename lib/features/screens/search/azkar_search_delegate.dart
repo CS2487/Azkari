@@ -24,7 +24,8 @@ class _AzkarSearchPageState extends State<AzkarSearchPage> {
         title: 'بحث الأذكار',
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.pop(context), // العودة التلقائية للقائمة السابقة
+          onPressed: () =>
+              Navigator.pop(context), // العودة التلقائية للقائمة السابقة
         ),
         actions: [
           if (query.isNotEmpty)
@@ -65,38 +66,38 @@ class _AzkarSearchPageState extends State<AzkarSearchPage> {
           Expanded(
             child: query.isEmpty
                 ? const Center(
-              child: Text(
-                "ابدأ بالكتابة للبحث",
-                style: TextStyle(fontSize: 18),
-              ),
-            )
+                    child: Text(
+                      "ابدأ بالكتابة للبحث",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  )
                 : results.isEmpty
-                ? const Center(
-              child: Text(
-                "لا توجد نتائج",
-                style: TextStyle(fontSize: 18),
-              ),
-            )
-                : ListView.builder(
-              itemCount: results.length,
-              itemBuilder: (context, index) {
-                final item = results[index];
-                return ListTile(
-                  title: Text(item["text"]!,
-                      style: const TextStyle(fontSize: 18)),
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (_) => AzkarPage(
-                          type: item["type"]!,
-                          title: item["text"]!,
+                    ? const Center(
+                        child: Text(
+                          "لا توجد نتائج",
+                          style: TextStyle(fontSize: 18),
                         ),
+                      )
+                    : ListView.builder(
+                        itemCount: results.length,
+                        itemBuilder: (context, index) {
+                          final item = results[index];
+                          return ListTile(
+                            title: Text(item["text"]!,
+                                style: const TextStyle(fontSize: 18)),
+                            onTap: () {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (_) => AzkarPage(
+                                    type: item["type"]!,
+                                    title: item["text"]!,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
                       ),
-                    );
-                  },
-                );
-              },
-            ),
           ),
         ],
       ),

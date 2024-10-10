@@ -20,8 +20,8 @@ class AppTheme {
         backgroundColor: whiteColor,
         dialBackgroundColor: Colors.grey.shade200,
         dialHandColor: primaryColor,
-        hourMinuteColor: MaterialStateColor.resolveWith(
-          (states) => states.contains(MaterialState.selected)
+        hourMinuteColor: WidgetStateColor.resolveWith(
+          (states) => states.contains(WidgetState.selected)
               ? primaryColor
               : Colors.grey.shade100,
         ),
@@ -78,8 +78,8 @@ class AppTheme {
         backgroundColor: darkBackground,
         dialBackgroundColor: blackColor,
         dialHandColor: primaryColor,
-        hourMinuteColor: MaterialStateColor.resolveWith(
-          (states) => states.contains(MaterialState.selected)
+        hourMinuteColor: WidgetStateColor.resolveWith(
+          (states) => states.contains(WidgetState.selected)
               ? primaryColor
               : Colors.grey.shade800,
         ),
@@ -150,7 +150,6 @@ class AppTheme {
   static const AppBarTheme _lightAppBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
-
 
     backgroundColor: whiteColor, // ✅ اللون الرئيسي
     iconTheme: IconThemeData(color: blackColor),

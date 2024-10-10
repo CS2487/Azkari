@@ -1,5 +1,3 @@
-
-
 import 'package:azkar_application/core/utils/haptics.dart';
 import 'package:azkar_application/features/providers/settings_provider.dart';
 import 'package:azkar_application/features/screens/sebha/widgets/circular_counter.dart';
@@ -113,8 +111,7 @@ class _SebhaPageState extends State<SebhaPage>
               return SingleChildScrollView(
                 padding: EdgeInsets.only(bottom: bottomInset),
                 child: ConstrainedBox(
-                  constraints:
-                  BoxConstraints(minHeight: constraints.maxHeight),
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: IntrinsicHeight(
                     child: Column(
                       children: [

@@ -42,3 +42,28 @@ flutter clean2️⃣ Fetch Dependencies
 flutter pub get
 
 
+///This is Important dart fix --apply And  dart format .
+///#!/bin/bash
+# اسم السكربت: precommit.sh
+Copy into terminal and ./precommit.sh
+echo "🔹 Formatting Dart code..."
+dart format .
+
+echo "🔹 Applying fixes..."
+dart fix --apply
+
+echo "🔹 Adding changes to Git..."
+git add .
+
+echo "✅ All done! You can now commit safely."
+
+
+///flutter build apk --release
+///flutter build apk --release --split-per-abi
+//flutter build apk --release --split-per-abi
+///flutter clean
+flutter pub get
+flutter build appbundle --release
+# أو
+flutter build apk --release --split-per-abi
+flutter build appbundle --release --split-debug-info=debug_info --obfuscate

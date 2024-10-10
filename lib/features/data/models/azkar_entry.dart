@@ -1,4 +1,3 @@
-
 class AzkarCategory {
   final int id;
   final String category;

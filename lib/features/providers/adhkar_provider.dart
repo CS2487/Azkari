@@ -1,5 +1,3 @@
-
-
 import 'package:azkar_application/features/data/models/azkar_entry.dart';
 import 'package:azkar_application/features/data/repositories/azkar_repository.dart';
 import 'package:flutter/material.dart';

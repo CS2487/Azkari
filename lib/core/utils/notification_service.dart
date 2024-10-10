@@ -7,7 +7,7 @@ class NotificationService {
   NotificationService._internal();
 
   final FlutterLocalNotificationsPlugin _plugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -23,6 +23,7 @@ class NotificationService {
   Future<void> cancelNotification(int id) async {
     await _plugin.cancel(id);
   }
+
   Future<void> cancelAll() async {
     await _plugin.cancelAll();
   }
@@ -55,7 +56,7 @@ class NotificationService {
   }) async {
     final now = tz.TZDateTime.now(tz.local);
     var scheduled =
-    tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
 
     if (scheduled.isBefore(now)) {
       scheduled = scheduled.add(const Duration(days: 1));
@@ -80,7 +81,7 @@ class NotificationService {
       details,
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
+          UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }
@@ -94,7 +95,7 @@ class NotificationService {
   }) async {
     final now = tz.TZDateTime.now(tz.local);
     var scheduled =
-    tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
     while (scheduled.weekday != DateTime.friday || scheduled.isBefore(now)) {
       scheduled = scheduled.add(const Duration(days: 1));
     }
@@ -118,9 +119,8 @@ class NotificationService {
       details,
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
+          UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
     );
   }
-
 }

@@ -78,17 +78,12 @@ class _AzkarPageState extends State<AzkarPage> {
     );
 
     if (picked != null) {
-      // 🔹 ID فريد لكل صفحة بناءً على الـ title نفسه
       final int notificationId = widget.title.hashCode;
-
-      // 🔹 إلغاء أي إشعار قديم مرتبط بنفس العنوان
       await NotificationService().cancelNotification(notificationId);
-
-      // 🔹 جدولة إشعار جديد برسالة تعتمد على العنوان
       await NotificationService().scheduleDailyNotification(
         id: notificationId,
-        title: widget.title, // 👈 العنوان نفسه
-        body: "حان وقت ${widget.title}", // 👈 الرسالة مبنية على العنوان
+        title: widget.title,
+        body: "حان وقت ${widget.title}",
         hour: picked.hour,
         minute: picked.minute,
       );

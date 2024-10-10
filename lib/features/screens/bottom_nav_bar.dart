@@ -3,6 +3,7 @@ import 'package:azkar_application/features/screens/favorites/favorites_page.dart
 import 'package:azkar_application/features/screens/home/home_bage.dart';
 import 'package:azkar_application/features/screens/settings/settings_page.dart';
 import 'package:flutter/material.dart';
+
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
 

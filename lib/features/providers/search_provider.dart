@@ -9,9 +9,9 @@ class SearchProvider extends ChangeNotifier {
   void setItems(List<Map<String, dynamic>> items) {
     _allItems = items
         .map((e) => {
-      "text": (e["title"] ?? "").toString(),
-      "type": (e["type"] ?? "").toString(),
-    })
+              "text": (e["title"] ?? "").toString(),
+              "type": (e["type"] ?? "").toString(),
+            })
         .toList();
     _results = _allItems; // عرض كل العناصر افتراضياً
     notifyListeners();

@@ -338,7 +338,6 @@ class _SettingsPageState extends State<SettingsPage>
   @override
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
-    final localeProvider = context.watch<LocaleProvider>();
     final settingsProvider = context.watch<SettingsProvider>();
 
     return Scaffold(
@@ -351,7 +350,7 @@ class _SettingsPageState extends State<SettingsPage>
         children: [
           _sectionHeader('الإعدادات العامة'),
           _themeTile(themeProvider),
-         // _languageTile(localeProvider),
+          // _languageTile(localeProvider),
           _sectionHeader('الهزاز'),
           _hapticsSection(context, settingsProvider),
           _sectionHeader('التنبيهات'),

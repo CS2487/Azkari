@@ -66,9 +66,9 @@ class CircularCounter extends StatelessWidget {
                 Text(
                   '$count / $goal',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: primary,
-                  ),
+                        fontWeight: FontWeight.bold,
+                        color: primary,
+                      ),
                 ),
                 const SizedBox(height: 6),
                 Text(
