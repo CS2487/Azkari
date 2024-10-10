@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:azkar_application/core/theme/app_theme.dart';
+import 'package:azkar_application/features/SebhaPage/sebha_page.dart';
+import 'package:azkar_application/features/favorites/presentation/favorites_page.dart';
+import 'package:azkar_application/features/home/home_bage.dart';
+import 'package:azkar_application/features/settings/presentation/settings_page.dart';
+
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({super.key});
+
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = const [
+    HomePage(),
+    SebhaPage(),
+    FavoritePage(),
+    SettingsPage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    return Scaffold(
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 1,
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: colorScheme.primary, // استخدمنا اللون الرئيسي من الثيم
+        unselectedItemColor: colorScheme.onSurface.withOpacity(0.6),
+        backgroundColor: theme.scaffoldBackgroundColor, // خلفية تعتمد على الثيم
+        onTap: (index) => setState(() => _currentIndex = index),
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'الرئيسية'),
+          BottomNavigationBarItem(icon: Icon(Icons.self_improvement), label: 'المسبحة'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'المفضلة'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'الإعدادات'),
+        ],
+      ),
+    );
+  }
+}
