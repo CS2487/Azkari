@@ -1,73 +1,55 @@
-import 'package:shopping/core/imports/imports.dart';
-
-import '../../data/models/product_model.dart';
+import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final ProductModel? product;
+  final String? title;
+  final Widget? leading;
+  final List<Widget>? actions;
+  final Color? backgroundColor;
 
   const CustomAppBar({
     super.key,
-    this.product,
+    this.title,
+    this.leading,
+    this.actions,
+    this.backgroundColor,
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(70.0);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final greeting =
-        DateTime.now().hour < 12 ? l10n.goodMorning : l10n.goodEvening;
-    final username = l10n.username;
+    final bgColor = backgroundColor ?? Theme.of(context).scaffoldBackgroundColor;
 
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Container(
+        color: bgColor,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/Search');
-              },
-              icon: Tooltip(
-                message: l10n.search,
-                child: const Icon(Icons.search_rounded),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Text(
-                          greeting,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              username,
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                            const SizedBox(width: 8),
-                            const Icon(
-                              Icons.waving_hand_rounded,
-                              color: Colors.amber,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+            if (leading != null)
+              leading!
+            else
+              const SizedBox(width: 48), // مساحة فارغة إذا لم يوجد أي leading
+            Expanded(
+              child: Center(
+                child: Text(
+                  title ?? '',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
+            if (actions != null)
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: actions!,
+              )
+            else
+              const SizedBox(width: 48), // مساحة فارغة للتوازن
           ],
         ),
       ),

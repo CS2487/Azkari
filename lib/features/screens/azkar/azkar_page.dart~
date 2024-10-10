@@ -68,9 +68,43 @@ class _AzkarPageState extends State<AzkarPage> {
     );
   }
 
+  String _getTitleByType(String type) {
+    switch (type) {
+      case "morning":
+        return "أذكار الصباح";
+      case "evening":
+        return "أذكار المساء";
+      case "sleep":
+        return "أذكار النوم";
+      case "wudu":
+        return "أذكار الوضوء";
+      case "prayer":
+        return "أذكار الصلاة";
+      default:
+        return "أذكار";
+    }
+  }
+
+  String _getBodyByType(String type) {
+    switch (type) {
+      case "morning":
+        return "حان وقت أذكار الصباح 🌅";
+      case "evening":
+        return "حان وقت أذكار المساء 🌙";
+      case "sleep":
+        return "لا تنس أذكار النوم 😴";
+      case "wudu":
+        return "تذكير: أذكار الوضوء 💧";
+      case "prayer":
+        return "تذكير: أذكار ما بعد الصلاة 🕌";
+      default:
+        return "تذكير بقراءة الأذكار";
+    }
+  }
+
   Future<void> _pickTimeAndSchedule(BuildContext context) async {
     final settingsProvider = context.read<SettingsProvider>();
-    final initialTime = settingsProvider.settings.morningTime; // مبدئيًا أي وقت
+    final initialTime = settingsProvider.settings.morningTime; // مبدئيًا
 
     final picked = await showTimePicker(
       context: context,
@@ -78,24 +112,35 @@ class _AzkarPageState extends State<AzkarPage> {
     );
 
     if (picked != null) {
-      // 🔹 ID فريد لكل صفحة بناءً على الـ title نفسه
-      final int notificationId = widget.title.hashCode;
+      // 🔹 ID فريد لكل نوع ذكر
+      final int notificationId = widget.type.hashCode;
 
-      // 🔹 إلغاء أي إشعار قديم مرتبط بنفس العنوان
+      // 🔹 تحديث الوقت في SettingsProvider (حسب النوع)
+      switch (widget.type) {
+        case "morning":
+          await settingsProvider.pickMorningTime(picked);
+          break;
+        case "evening":
+          await settingsProvider.pickEveningTime(picked);
+          break;
+      // تقدر تضيف هنا sleep / wudu / prayer لو عندك settings لهم
+      }
+
+      // 🔹 إلغاء أي إشعار قديم لنفس النوع
       await NotificationService().cancelNotification(notificationId);
 
-      // 🔹 جدولة إشعار جديد برسالة تعتمد على العنوان
+      // 🔹 جدولة إشعار جديد
       await NotificationService().scheduleDailyNotification(
         id: notificationId,
-        title: widget.title, // 👈 العنوان نفسه
-        body: "حان وقت ${widget.title}", // 👈 الرسالة مبنية على العنوان
+        title: _getTitleByType(widget.type),
+        body: _getBodyByType(widget.type),
         hour: picked.hour,
         minute: picked.minute,
       );
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("تم ضبط وقت ${widget.title}"),
+          content: Text('تم ضبط وقت ${_getTitleByType(widget.type)}'),
           duration: const Duration(milliseconds: 600),
         ),
       );

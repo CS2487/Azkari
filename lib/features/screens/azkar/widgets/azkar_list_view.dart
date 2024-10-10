@@ -1,11 +1,11 @@
-import 'package:azkar_application/features/azkar/azkar_page.dart';
-import 'package:azkar_application/features/azkar/presentation/widgets/azkar_card.dart';
-import 'package:azkar_application/features/favorites/provider/FavoritesProvider.dart';
+import 'package:azkar_application/features/providers/favorites_provider.dart';
+import 'package:azkar_application/features/screens/azkar/azkar_page.dart';
+import 'package:azkar_application/features/screens/azkar/widgets/azkar_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AzkarListView extends StatelessWidget {
-  final List<Map<String, String>> items;
+  final List<Map<String, dynamic>> items;   // بدل String
   const AzkarListView({super.key, required this.items});
 
   @override
@@ -27,7 +27,12 @@ class AzkarListView extends StatelessWidget {
               isFavorite: isFavorite,
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => AzkarPage(type: type)),
+                MaterialPageRoute(
+                  builder: (_) => AzkarPage(
+                    title: item['title'] ?? '',
+                    type: type,
+                  ),
+                ),
               ),
               onFavoriteToggle: () => favs.toggleFavorite(item),
             );

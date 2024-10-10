@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:azkar_application/core/theme/app_theme.dart';
+
 class AzkarCard extends StatelessWidget {
   final String title;
   final String type;

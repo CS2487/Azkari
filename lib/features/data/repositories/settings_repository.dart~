@@ -1,5 +1,5 @@
 import 'package:azkar_application/core/utils/haptics.dart';
-import 'package:azkar_application/data/models/settings_model.dart';
+import 'package:azkar_application/features/models/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

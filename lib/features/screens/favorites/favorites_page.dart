@@ -1,9 +1,7 @@
-import 'package:azkar_application/features/azkar/presentation/widgets/azkar_list_view.dart';
-import 'package:azkar_application/features/favorites/provider/FavoritesProvider.dart';
-import 'package:azkar_application/main.dart';
+import 'package:azkar_application/features/providers/favorites_provider.dart';
+import 'package:azkar_application/features/screens/azkar/widgets/azkar_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});
 

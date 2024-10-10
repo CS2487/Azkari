@@ -1,8 +1,7 @@
 import 'package:azkar_application/core/utils/haptics.dart';
 import 'package:azkar_application/core/utils/notification_service.dart';
-import 'package:azkar_application/data/models/settings_model.dart';
-import 'package:azkar_application/data/repositories/settings_repository.dart';
-import 'package:azkar_application/main.dart';
+import 'package:azkar_application/features/data/models/settings_model.dart';
+import 'package:azkar_application/features/data/repositories/settings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:vibration/vibration.dart';
 
@@ -86,7 +85,7 @@ class SettingsProvider extends ChangeNotifier {
 
   Future<void> maybeHaptic() async {
     if (!settings.hapticsEnabled) return;
-    if (await Vibration.hasVibrator() ?? false) {
+    if (await Vibration.hasVibrator()) {
       switch (settings.hapticStrength) {
         case HapticStrength.light:
           Vibration.vibrate(duration: 50, amplitude: 50);

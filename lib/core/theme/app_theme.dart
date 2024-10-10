@@ -1,31 +1,59 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  /// Light Theme
+  static const Color primaryColor = Color(0xFFF2684D);
+  static const Color darkBackground = Color(0xFF393939);
+  static const Color whiteColor = Colors.white;
+  static const Color blackColor = Colors.black;
+
+  // 🌞 Light Theme
   static ThemeData get lightTheme {
     return ThemeData(
-      dialogBackgroundColor: Colors.white,
       useMaterial3: true,
+      dialogBackgroundColor: whiteColor,
       colorScheme: _lightColorScheme,
       appBarTheme: _lightAppBarTheme,
-      scaffoldBackgroundColor: Colors.white,
-      cardColor: Colors.white,
-      inputDecorationTheme: _inputDecorationTheme(Colors.black),
-      elevatedButtonTheme: _elevatedButtonTheme(Colors.white, Colors.redAccent),
+      scaffoldBackgroundColor: whiteColor,
+
+      // Time Picker
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: whiteColor,
+        dialBackgroundColor: Colors.grey.shade200,
+        dialHandColor: primaryColor,
+        hourMinuteColor: MaterialStateColor.resolveWith(
+          (states) => states.contains(MaterialState.selected)
+              ? primaryColor
+              : Colors.grey.shade100,
+        ),
+        hourMinuteTextColor: blackColor,
+        entryModeIconColor: primaryColor,
+        helpTextStyle: const TextStyle(
+          color: primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+
+      cardTheme: CardTheme(
+        color: whiteColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 3,
+      ),
+      inputDecorationTheme: _inputDecorationTheme(blackColor),
+      elevatedButtonTheme: _elevatedButtonTheme(whiteColor, primaryColor),
       floatingActionButtonTheme: _floatingActionButtonTheme(
-        Colors.white,
-        const Color.fromARGB(0, 28, 57, 65),
+        whiteColor,
+        darkBackground,
       ),
       textTheme: _getTextTheme(),
       splashFactory: InkRipple.splashFactory,
-      splashColor: Colors.red.withOpacity(0.08),
+      splashColor: primaryColor.withOpacity(0.08),
       textSelectionTheme: TextSelectionThemeData(
-        selectionHandleColor: Colors.red.withOpacity(1.0),
-        selectionColor: Colors.red.withOpacity(0.6),
-        cursorColor: Colors.red.withOpacity(1.0),
+        selectionHandleColor: primaryColor,
+        selectionColor: primaryColor.withOpacity(0.6),
+        cursorColor: primaryColor,
       ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: const Color.fromARGB(255, 242, 104, 77),
+        backgroundColor: primaryColor,
         contentTextStyle: const TextStyle(color: Colors.white),
         behavior: SnackBarBehavior.floating,
         elevation: 2,
@@ -36,110 +64,124 @@ class AppTheme {
     );
   }
 
-  /// Dark Theme
+  // 🌙 Dark Theme
   static ThemeData get darkTheme {
     return ThemeData(
-      dialogBackgroundColor: const Color.fromARGB(255, 57, 57, 57),
+      useMaterial3: true,
+      dialogBackgroundColor: darkBackground,
+      colorScheme: _darkColorScheme,
+      appBarTheme: _darkAppBarTheme,
+      scaffoldBackgroundColor: blackColor,
+
+      // Time Picker
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: darkBackground,
+        dialBackgroundColor: blackColor,
+        dialHandColor: primaryColor,
+        hourMinuteColor: MaterialStateColor.resolveWith(
+          (states) => states.contains(MaterialState.selected)
+              ? primaryColor
+              : Colors.grey.shade800,
+        ),
+        hourMinuteTextColor: whiteColor,
+        entryModeIconColor: primaryColor,
+        helpTextStyle: const TextStyle(
+          color: primaryColor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+
+      cardTheme: CardTheme(
+        color: darkBackground,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 3,
+      ),
+      inputDecorationTheme: _inputDecorationTheme(whiteColor),
+      elevatedButtonTheme: _elevatedButtonTheme(whiteColor, blackColor),
+      floatingActionButtonTheme: _floatingActionButtonTheme(
+        darkBackground,
+        whiteColor,
+      ),
+      textTheme: _getTextTheme(),
+      splashFactory: InkRipple.splashFactory,
+      splashColor: primaryColor.withOpacity(0.08),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: primaryColor,
+        selectionColor: primaryColor.withOpacity(0.6),
+        cursorColor: primaryColor,
+      ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: const Color.fromARGB(255, 242, 104, 77),
+        backgroundColor: primaryColor,
         contentTextStyle: const TextStyle(color: Colors.white),
         behavior: SnackBarBehavior.floating,
-        elevation: 2,
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      useMaterial3: true,
-      colorScheme: _darkColorScheme,
-      appBarTheme: _darkAppBarTheme,
-      scaffoldBackgroundColor: Colors.black,
-      cardColor: const Color.fromARGB(255, 57, 57, 57),
-      inputDecorationTheme: _inputDecorationTheme(Colors.white),
-      elevatedButtonTheme: _elevatedButtonTheme(Colors.white, Colors.black),
-      floatingActionButtonTheme: _floatingActionButtonTheme(
-        const Color.fromARGB(255, 57, 57, 57),
-        Colors.white,
-      ),
-      textTheme: _getTextTheme(),
-      splashFactory: InkRipple.splashFactory,
-      splashColor: Colors.red.withOpacity(0.08),
-      textSelectionTheme: TextSelectionThemeData(
-        selectionHandleColor: Colors.red.withOpacity(1.0),
-        selectionColor: Colors.red.withOpacity(0.6),
-        cursorColor: Colors.red.withOpacity(1.0),
-      ),
     );
   }
 
-  /// Light Color Scheme
+  // 🎨 Color Schemes
   static const ColorScheme _lightColorScheme = ColorScheme(
-    primary: Color.fromARGB(255, 242, 104, 77),
-    secondary: Colors.black,
-    surface: Colors.white,
-    error: Color.fromARGB(255, 242, 104, 77),
-    onPrimary: Colors.white,
-    onSecondary: Colors.white,
-    onSurface: Colors.black,
-    onError: Colors.white,
+    primary: primaryColor,
+    secondary: blackColor,
+    surface: whiteColor,
+    error: primaryColor,
+    onPrimary: whiteColor,
+    onSecondary: whiteColor,
+    onSurface: blackColor,
+    onError: whiteColor,
     brightness: Brightness.light,
   );
 
-  /// Dark Color Scheme
   static const ColorScheme _darkColorScheme = ColorScheme(
-    primary: Color.fromARGB(255, 242, 104, 77),
-    secondary: Colors.white,
-    surface: Colors.black,
-    error: Color.fromARGB(255, 242, 104, 77),
-    onPrimary: Colors.black,
-    onSecondary: Colors.black,
-    onSurface: Colors.white,
-    onError: Colors.black,
+    primary: primaryColor,
+    secondary: whiteColor,
+    surface: blackColor,
+    error: primaryColor,
+    onPrimary: blackColor,
+    onSecondary: blackColor,
+    onSurface: whiteColor,
+    onError: blackColor,
     brightness: Brightness.dark,
   );
 
-  /// AppBar Theme
   static const AppBarTheme _lightAppBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
-    backgroundColor: Colors.white,
-    foregroundColor: Colors.black, // للـ icon و title
-    iconTheme: IconThemeData(color: Colors.black),
+
+
+    backgroundColor: whiteColor, // ✅ اللون الرئيسي
+    iconTheme: IconThemeData(color: blackColor),
   );
 
-  /// Dark AppBar Theme
   static const AppBarTheme _darkAppBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
-    foregroundColor: Colors.white, // للـ icon و title
-    backgroundColor: Colors.black,
-    iconTheme: IconThemeData(color: Colors.white),
+    backgroundColor: blackColor, // ✅ اللون الرئيسي
+    iconTheme: IconThemeData(color: whiteColor),
   );
 
-  /// Input Decoration Theme
+  // 🎨 Input Decoration
   static InputDecorationTheme _inputDecorationTheme(Color borderColor) {
     return InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: borderColor),
       ),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 12,
-      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     );
   }
 
-  /// Elevated Button Theme
+  // 🎨 Elevated Button
   static ElevatedButtonThemeData _elevatedButtonTheme(
       Color backgroundColor, Color foregroundColor) {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: foregroundColor,
         backgroundColor: backgroundColor,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 12,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -147,7 +189,7 @@ class AppTheme {
     );
   }
 
-  /// Floating Action Button Theme
+  // 🎨 FAB
   static FloatingActionButtonThemeData _floatingActionButtonTheme(
       Color backgroundColor, Color foregroundColor) {
     return FloatingActionButtonThemeData(
@@ -158,9 +200,9 @@ class AppTheme {
     );
   }
 
-  /// Get Text Theme
+  // 🎨 Text Theme
   static TextTheme _getTextTheme() {
-    const fontFamily = 'Roboto-Regular'; // تحديد الخط الأساسي لجميع اللغات
+    const fontFamily = 'Roboto';
 
     return const TextTheme(
       displayLarge: TextStyle(
@@ -168,7 +210,6 @@ class AppTheme {
         fontSize: 32,
         fontWeight: FontWeight.bold,
         height: 1.5,
-        textBaseline: TextBaseline.alphabetic,
       ),
       displayMedium: TextStyle(
         fontFamily: fontFamily,

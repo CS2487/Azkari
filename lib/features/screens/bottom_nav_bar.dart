@@ -28,12 +28,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        elevation: 2,
+        elevation: 1,
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: colorScheme.primary,
-        unselectedItemColor: colorScheme.onSurface.withOpacity(0.6),
-        backgroundColor: theme.scaffoldBackgroundColor,
         onTap: (index) => setState(() => _currentIndex = index),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'الرئيسية'),

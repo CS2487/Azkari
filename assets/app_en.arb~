@@ -1,0 +1,41 @@
+{
+  "@@locale": "en",
+  "title": "Azkar App",
+  "azkar": "Azkar",
+  "morningAzkar": "Morning Azkar",
+  "eveningAzkar": "Evening Azkar",
+  "sleepAzkar": "Sleep Azkar",
+  "prayerAzkar": "Prayer Azkar",
+  "masjidAzkar": "Azkar for Going to the Mosque",
+  "noAzkar": "No supplications available.",
+  "share": "Share",
+  "settings": "Settings",
+  "shareAppText": "Share the app",
+  "shareme": "Check out this wonderful Azkar app!",
+  "about": "About",
+  "aboutmsg": "This app helps you remember daily supplications with counts and favorites.",
+  "help": "Help",
+  "contactwithus": "For support, contact us at: support@example.com",
+  "changeLanguage": "Change language",
+  "selectlanguage": "Select a language",
+  "english": "English",
+  "arabic": "Arabic",
+  "don_favorites": "Favorites",
+  "morningComplete": "You have completed Morning Azkar. May Allah bless you. You can move to another remembrance.",
+  "eveningComplete": "You have completed Evening Azkar. May Allah bless you. You can move to another remembrance.",
+  "remembranceIndex": "Remembrance {current} of {total}",
+  "@remembranceIndex": {
+    "description": "Shows the current azkar index out of total",
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "repeatCount": "Repeat {count}",
+  "@repeatCount": {
+    "description": "How many times to repeat",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  }
+}

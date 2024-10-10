@@ -1,0 +1,88 @@
+import 'package:azkar_application/core/utils/haptics.dart';
+import 'package:azkar_application/features/data/models/settings_model.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SettingsRepository {
+  SettingsRepository(this.prefs);
+  final SharedPreferences prefs;
+
+  static const _hapticsKey = 'haptics_enabled';
+  static const _hapticStrengthKey = 'haptic_strength';
+
+  static const _morningOnKey = 'morning_on';
+  static const _morningHourKey = 'morning_hour';
+  static const _morningMinuteKey = 'morning_minute';
+
+  static const _eveningOnKey = 'evening_on';
+  static const _eveningHourKey = 'evening_hour';
+  static const _eveningMinuteKey = 'evening_minute';
+
+  static const _fridayOnKey = 'friday_on';
+  static const _fridayHourKey = 'friday_hour';
+  static const _fridayMinuteKey = 'friday_minute';
+
+  static const _localeKey = 'app_locale';
+
+  SettingsStateModel load() {
+    final hOn = prefs.getBool(_hapticsKey) ?? true;
+    final strengthIndex = prefs.getInt(_hapticStrengthKey) ?? 1;
+    final hapticStrength = HapticStrength.values[strengthIndex];
+
+    final mOn = prefs.getBool(_morningOnKey) ?? true;
+    final mh = prefs.getInt(_morningHourKey) ?? 7;
+    final mm = prefs.getInt(_morningMinuteKey) ?? 0;
+
+    final eOn = prefs.getBool(_eveningOnKey) ?? true;
+    final eh = prefs.getInt(_eveningHourKey) ?? 19;
+    final em = prefs.getInt(_eveningMinuteKey) ?? 0;
+
+    final fOn = prefs.getBool(_fridayOnKey) ?? true;
+    final fh = prefs.getInt(_fridayHourKey) ?? 9;
+    final fm = prefs.getInt(_fridayMinuteKey) ?? 0;
+
+    return SettingsStateModel(
+      hapticsEnabled: hOn,
+      hapticStrength: hapticStrength,
+      morningTime: TimeOfDay(hour: mh, minute: mm),
+      eveningTime: TimeOfDay(hour: eh, minute: em),
+      fridayTime: TimeOfDay(hour: fh, minute: fm),
+      morningOn: mOn,
+      eveningOn: eOn,
+      fridayOn: fOn,
+    );
+  }
+
+  Future<void> setHaptics(bool enabled) async =>
+      prefs.setBool(_hapticsKey, enabled);
+  Future<void> setHapticStrength(HapticStrength strength) async =>
+      prefs.setInt(_hapticStrengthKey, strength.index);
+
+  Future<void> setMorningOn(bool on) async => prefs.setBool(_morningOnKey, on);
+  Future<void> setEveningOn(bool on) async => prefs.setBool(_eveningOnKey, on);
+  Future<void> setFridayOn(bool on) async => prefs.setBool(_fridayOnKey, on);
+
+  Future<void> setMorningTime(TimeOfDay t) async {
+    await prefs.setInt(_morningHourKey, t.hour);
+    await prefs.setInt(_morningMinuteKey, t.minute);
+  }
+
+  Future<void> setEveningTime(TimeOfDay t) async {
+    await prefs.setInt(_eveningHourKey, t.hour);
+    await prefs.setInt(_eveningMinuteKey, t.minute);
+  }
+
+  Future<void> setFridayTime(TimeOfDay t) async {
+    await prefs.setInt(_fridayHourKey, t.hour);
+    await prefs.setInt(_fridayMinuteKey, t.minute);
+  }
+
+  Locale loadLocale() {
+    final code = prefs.getString(_localeKey);
+    if (code == 'en') return const Locale('en', 'US');
+    return const Locale('ar', 'AE');
+  }
+
+  Future<void> saveLocale(Locale locale) async =>
+      prefs.setString(_localeKey, locale.languageCode);
+}
