@@ -10,9 +10,9 @@
 
 ## 📸 Screenshots
 
-| Morning Azkar | Evening Azkar | Settings |
-|---------------|---------------|---------|
-| ![Morning](screenshots/morning.png) | ![Evening](screenshots/evening.png) | ![Settings](screenshots/settings.png) |
+| (1) Morning Azkar | (2) Evening Azkar | (3) Settings | (4) Example Notification |
+|------------------|-----------------|--------------|--------------------------|
+| ![Morning](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(4).jpg) | ![Evening](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(3).jpg) | ![Settings](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(2).jpg) | ![Notification](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(1).jpg) |
 
 > Add your own screenshots in the `screenshots/` folder.
 
@@ -40,5 +40,6 @@ Keep your codebase clean, professional, and production-ready with this maintenan
 1️⃣ Clean Build Artifacts
 flutter clean2️⃣ Fetch Dependencies
 flutter pub get
+
 
 
