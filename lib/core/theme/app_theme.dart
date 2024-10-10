@@ -150,16 +150,14 @@ class AppTheme {
   static const AppBarTheme _lightAppBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
-
-    backgroundColor: whiteColor, // ✅ اللون الرئيسي
-    iconTheme: IconThemeData(color: blackColor),
+    scrolledUnderElevation: 0,
+    backgroundColor: whiteColor,
   );
 
   static const AppBarTheme _darkAppBarTheme = AppBarTheme(
     centerTitle: true,
     elevation: 0,
-    backgroundColor: blackColor, // ✅ اللون الرئيسي
-    iconTheme: IconThemeData(color: whiteColor),
+    backgroundColor: blackColor,
   );
 
   // 🎨 Input Decoration

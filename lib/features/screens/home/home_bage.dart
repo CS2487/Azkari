@@ -56,8 +56,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         items = loadedItems;
       });
-
-      // ربط البيانات مع SearchProvider
       final searchProvider = context.read<SearchProvider>();
       searchProvider.setItems(items);
     }
@@ -87,9 +85,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: items.isEmpty
-          ? Container() // لا لود، الصفحة فارغة أولاً فقط
-          : AzkarListView(items: items),
+      body: items.isEmpty ? Container() : AzkarListView(items: items),
     );
   }
 }

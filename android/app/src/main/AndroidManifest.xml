@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.azkar_application">
+    package="com.app.azkari">
 
     <!-- أذونات -->
     <!-- Android 13+: إذن إظهار الإشعارات -->

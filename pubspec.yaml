@@ -1,13 +1,13 @@
-name: azkar_application  # اسم المشروع
+name: azkar_application
 
 description: "This is App adhkar UI/UX and provider... theme... language"
 
-publish_to: 'none'  # المشروع محلي
+publish_to: 'none'
 
 version: 0.1.5+1
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -21,12 +21,12 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # State management
-  provider: ^6.1.2
+  provider: ^6.0.5
 
-  # Local storage (Android only)
-  shared_preferences: ^2.5.3
+  # Local storage
+  shared_preferences: ^2.2.3
 
-  # Timezone & notifications (Android only)
+  # Timezone & notifications
   flutter_timezone: ^4.1.1
   timezone: ^0.9.4
   flutter_local_notifications: ^17.2.4
@@ -35,8 +35,8 @@ dependencies:
   percent_indicator: ^4.2.5
 
   # Device features
-  fluttertoast: ^8.2.12
-  share_plus: ^11.1.0
+  fluttertoast: ^8.2.8
+  share_plus: ^9.0.0
   vibration: ^3.1.3
   url_launcher: ^6.3.1
 
@@ -47,6 +47,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/json/adhkar.json
+    - assets/json/arbaeen.json

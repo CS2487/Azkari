@@ -13,7 +13,7 @@ class SearchProvider extends ChangeNotifier {
               "type": (e["type"] ?? "").toString(),
             })
         .toList();
-    _results = _allItems; // عرض كل العناصر افتراضياً
+    _results = _allItems;
     notifyListeners();
   }
 

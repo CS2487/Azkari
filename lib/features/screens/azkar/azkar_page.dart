@@ -57,13 +57,10 @@ class _AzkarPageState extends State<AzkarPage> {
   }
 
   void _showCompletionMessage() {
-    final isMorning = widget.type == "morning";
     Fluttertoast.showToast(
-      msg: isMorning
-          ? '✅ تم الانتهاء من أذكار الصباح'
-          : '✅ تم الانتهاء من أذكار المساء',
+      msg: '✅جزاك الله خير تم الانتهاء من ذكر ${widget.title}',
       toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.TOP,
+      gravity: ToastGravity.SNACKBAR,
       fontSize: 18.0,
     );
   }
@@ -83,7 +80,7 @@ class _AzkarPageState extends State<AzkarPage> {
       await NotificationService().scheduleDailyNotification(
         id: notificationId,
         title: widget.title,
-        body: "حان وقت ${widget.title}",
+        body: "حان وقت قراءة ${widget.title}",
         hour: picked.hour,
         minute: picked.minute,
       );
@@ -97,6 +94,23 @@ class _AzkarPageState extends State<AzkarPage> {
     }
   }
 
+  // void _cancelNotification() async {
+  //   // نستخدم نفس المعرّف (ID) الذي استخدمناه لجدولة التنبيه
+  //   final int notificationId = widget.title.hashCode;
+  //
+  //   // إلغاء التنبيه
+  //   await NotificationService().cancelNotification(notificationId);
+  //
+  //   if (!mounted) return;
+  //
+  //   // إظهار رسالة تأكيد للمستخدم
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       content: Text("✅ تم إيقاف التنبيه اليومي لـ ${widget.title}"),
+  //       duration: const Duration(milliseconds: 1500),
+  //     ),
+  //   );
+  // }
   void _shareCurrent(List<ZikrItem> list) {
     final page =
         _pageController.hasClients ? _pageController.page?.round() ?? 0 : 0;
@@ -137,6 +151,11 @@ class _AzkarPageState extends State<AzkarPage> {
             icon: const Icon(Icons.access_alarm),
             onPressed: () => _pickTimeAndSchedule(context),
           ),
+          // IconButton(
+          //   icon: const Icon(Icons.alarm_off),
+          //   onPressed: _cancelNotification,
+          //   tooltip: 'إيقاف التنبيه اليومي',
+          // ),
         ],
       ),
       body: Consumer<AzkarProvider>(

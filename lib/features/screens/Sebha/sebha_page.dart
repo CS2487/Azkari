@@ -30,6 +30,7 @@ class _SebhaPageState extends State<SebhaPage>
   ];
   DhikrItem? selectedDhikr;
 
+  // AnimationController للنبض عند الضغط على زر "تسبيح"
   late final AnimationController _pulseController = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 140),
@@ -59,15 +60,20 @@ class _SebhaPageState extends State<SebhaPage>
   }
 
   Future<void> _increment(SettingsProvider settings) async {
-    if (!mounted) return;
-    if (counter >= goal) return;
+    if (!mounted || counter >= goal) return;
 
     setState(() {
       counter = (counter + 1).clamp(0, goal);
     });
 
-    await _playPulse();
+    await _playPulse(); // تشغيل نبض الزر الكبير
     await _maybeHaptic(settings);
+  }
+
+  void _resetCounter() {
+    setState(() {
+      counter = 0;
+    });
   }
 
   double get progress {
@@ -96,12 +102,18 @@ class _SebhaPageState extends State<SebhaPage>
   Widget build(BuildContext context) {
     return Consumer<SettingsProvider>(
       builder: (context, settings, _) {
-        final theme = Theme.of(context);
-        final scheme = theme.colorScheme;
+        final scheme = Theme.of(context).colorScheme;
 
         return Scaffold(
           appBar: AppBar(
             title: const Text('المسبحة'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.refresh),
+                onPressed: _resetCounter,
+                tooltip: 'إعادة تسبيح',
+              ),
+            ],
           ),
           body: LayoutBuilder(
             builder: (context, constraints) {
@@ -133,7 +145,7 @@ class _SebhaPageState extends State<SebhaPage>
                               if (g == goal) return;
                               setState(() {
                                 goal = g.clamp(1, 100000);
-                                if (counter > goal) counter = goal;
+                                if (counter > goal) counter = 0; // تم التعديل
                               });
                             },
                           ),
@@ -146,14 +158,19 @@ class _SebhaPageState extends State<SebhaPage>
                               curve: Curves.easeOutCubic,
                               builder: (context, value, child) {
                                 return CircularCounter(
-                                  progress: value,
+                                  progress: value, // نستخدم القيمة المتحركة
                                   count: counter,
                                   goal: goal,
-                                  pulse: _pulseController.value,
                                   primary: scheme.primary,
                                   surface: scheme.surface,
                                   shadow: scheme.shadow,
                                   onSurfaceVariant: scheme.onSurfaceVariant,
+                                  // تم تغيير أسماء الدوال في CircularCounter ليتناسب مع الفصل
+                                  onIncrementRequested: () => setState(() {
+                                    if (counter < goal) counter++;
+                                  }),
+                                  onHapticRequested: () =>
+                                      _maybeHaptic(settings),
                                 );
                               },
                             ),

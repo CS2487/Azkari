@@ -42,7 +42,6 @@ flutter clean2️⃣ Fetch Dependencies
 flutter pub get
 
 
-<<<<<<< HEAD
 ///This is Important dart fix --apply And  dart format .
 ///#!/bin/bash
 # اسم السكربت: precommit.sh
