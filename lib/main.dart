@@ -38,7 +38,6 @@ class AzkarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settingsRepo = SettingsRepository(prefs);
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
