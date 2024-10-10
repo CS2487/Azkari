@@ -10,9 +10,9 @@
 
 ## 📸 Screenshots
 
-| Morning Azkar | Evening Azkar | Settings |
-|---------------|---------------|---------|
-| ![Morning](screenshots/morning.png) | ![Evening](screenshots/evening.png) | ![Settings](screenshots/settings.png) |
+| (1) Morning Azkar | (2) Evening Azkar | (3) Settings | (4) Example Notification |
+|------------------|-----------------|--------------|--------------------------|
+| ![Morning](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(4).jpg) | ![Evening](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(3).jpg) | ![Settings](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(2).jpg) | ![Notification](https://github.com/CS24-8-7/Azkari/blob/main/ScreenShoot/Screenshot%20(1).jpg) |
 
 > Add your own screenshots in the `screenshots/` folder.
 
@@ -42,6 +42,7 @@ flutter clean2️⃣ Fetch Dependencies
 flutter pub get
 
 
+<<<<<<< HEAD
 ///This is Important dart fix --apply And  dart format .
 ///#!/bin/bash
 # اسم السكربت: precommit.sh
@@ -67,3 +68,6 @@ flutter build appbundle --release
 # أو
 flutter build apk --release --split-per-abi
 flutter build appbundle --release --split-debug-info=debug_info --obfuscate
+=======
+
+>>>>>>> 78a072d795e6b2c9307ab91479ce8645dd9ba59b
