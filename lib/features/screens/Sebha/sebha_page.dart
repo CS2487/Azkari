@@ -2,11 +2,11 @@
 
 import 'package:azkar_application/core/utils/haptics.dart';
 import 'package:azkar_application/features/providers/settings_provider.dart';
-import 'package:azkar_application/features/screens/Sebha/widgets/circular_counter.dart';
-import 'package:azkar_application/features/screens/Sebha/widgets/dhikr_item.dart';
-import 'package:azkar_application/features/screens/Sebha/widgets/equal_buttons_row.dart';
-import 'package:azkar_application/features/screens/Sebha/widgets/primary_big_button.dart';
-import 'package:azkar_application/features/screens/Sebha/widgets/top_controls.dart';
+import 'package:azkar_application/features/screens/sebha/widgets/circular_counter.dart';
+import 'package:azkar_application/features/screens/sebha/widgets/dhikr_item.dart';
+import 'package:azkar_application/features/screens/sebha/widgets/equal_buttons_row.dart';
+import 'package:azkar_application/features/screens/sebha/widgets/primary_big_button.dart';
+import 'package:azkar_application/features/screens/sebha/widgets/top_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vibration/vibration.dart';

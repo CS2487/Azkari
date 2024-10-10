@@ -1,4 +1,4 @@
-import 'package:azkar_application/features/screens/Sebha/widgets/dhikr_item.dart';
+import 'package:azkar_application/features/screens/sebha/widgets/dhikr_item.dart';
 import 'package:flutter/material.dart';
 
 class TopControls extends StatelessWidget {

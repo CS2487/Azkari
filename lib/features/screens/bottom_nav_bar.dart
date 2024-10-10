@@ -1,4 +1,4 @@
-import 'package:azkar_application/features/screens/Sebha/sebha_page.dart';
+import 'package:azkar_application/features/screens/sebha/sebha_page.dart';
 import 'package:azkar_application/features/screens/favorites/favorites_page.dart';
 import 'package:azkar_application/features/screens/home/home_bage.dart';
 import 'package:azkar_application/features/screens/settings/settings_page.dart';
