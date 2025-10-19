@@ -23,3 +23,21 @@ Write-Host "🔹 Adding changes to Git..."
 git add .
 
 Write-Host "✅ All done! Ready for commit."
+
+
+
+
+
+
+
+
+
+
+
+////مهم مهم مهم
+git filter-branch --env-filter "
+GIT_AUTHOR_DATE='2024-10-10 10:00:00 +0300'
+GIT_COMMITTER_DATE='2024-10-10 10:00:00 +0300'
+" --tag-name-filter cat -- --all
+git push origin main -f
+git push origin main --force
